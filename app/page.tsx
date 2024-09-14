@@ -8,6 +8,7 @@ export default function Home() {
   useEffect(() => {
     const eventSource = new EventSource("api/crypto/assets");
     eventSource.onmessage = ({ data }) => {
+      console.log('Received data');
       const updatedCryptos = JSON.parse(data).data.sort((a: any, b: any) => {
         if (a.name < b.name) {
           return -1;
